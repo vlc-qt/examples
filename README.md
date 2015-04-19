@@ -14,6 +14,10 @@ Contributions are welcome. See [CONTRIBUTING.md]
 for more details.
 
 
+## List of Examples
+  - [Simple Player](https://github.com/vlc-qt/examples/tree/master/simple-player) (MIT)
+
+
 ## Licensing info
 
 Each example may be used under the terms of the license noted in the
