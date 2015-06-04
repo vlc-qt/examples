@@ -6,6 +6,8 @@
 #include <QtCore/QCoreApplication>
 #include <QtWidgets/QApplication>
 
+#include <vlc-qt/Common.h>
+
 #include "SimplePlayer.h"
 
 int main(int argc, char *argv[])
@@ -14,6 +16,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_X11InitThreads);
 
     QApplication app(argc, argv);
+    VlcCommon::setPluginPath(app.applicationDirPath() + "/plugins");
 
     SimplePlayer mainWindow;
     mainWindow.show();

@@ -12,7 +12,7 @@ This example is compatible with:
   - latest VLC-Qt with VLC 2.2 or later
 
 ## TODO
-  - Windows and OS X installation
+  - qmake install
 
 ## Build system selection
 If you want to use CMake, you can delete
@@ -23,3 +23,18 @@ If you want to use qmake, you can delete
   - CMakeLists.txt
   - cmake/*
   - src/CMakeLists.txt
+
+
+## Platform specific notes
+
+### Windows
+
+You can install all required libraries with `install` target (currently CMake only).
+
+### OS X
+
+Create package using (CMake only)
+```
+make install
+make dmg
+```
