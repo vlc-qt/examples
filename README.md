@@ -1,4 +1,4 @@
-# VLC-Qt Library Examples
+# VLC-Qt Examples [![Build Status][travis-img]][travis] [![Build status][appveyor-img]][appveyor]
 [![Homepage][web-img]][web]
 [![Latest release][release-img]][release]
 
@@ -26,7 +26,11 @@ file LICENSE.md in example subfolder.
 
 
 [web]: http://vlc-qt.tano.si
-[release]: https://github.com/ntadej/vlc-qt/releases
+[release]: https://github.com/vlc-qt/examples/releases
+[travis]: https://travis-ci.org/vlc-qt/examples
+[appveyor]: https://ci.appveyor.com/project/ntadej/examples
 
 [web-img]: https://img.shields.io/badge/web-vlc--qt.tano.si-green.svg
 [release-img]: https://img.shields.io/github/release/vlc-qt/examples.svg
+[travis-img]: https://travis-ci.org/vlc-qt/examples.svg?branch=master
+[appveyor-img]: https://ci.appveyor.com/api/projects/status/p8x4yi0as9bc1ts1?svg=true

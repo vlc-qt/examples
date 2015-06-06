@@ -1,0 +1,84 @@
+version: build{build}
+
+branches:
+  except:
+    - project/travis
+
+environment:
+  matrix:
+  - example: simple-player
+    name: win32
+    platform: amd64_x86
+    qt: msvc2013
+  - example: simple-player
+    name: win64
+    platform: amd64
+    qt: msvc2013_64
+  - example: simple-player
+    name: win32
+    platform: mingw
+    qt: mingw492_32
+
+  - example: qml-player
+    name: win32
+    platform: amd64_x86
+    qt: msvc2013
+  - example: qml-player
+    name: win64
+    platform: amd64
+    qt: msvc2013_64
+  - example: qml-player
+    name: win32
+    platform: mingw
+    qt: mingw492_32
+
+clone_folder: c:\dev\examples
+clone_depth: 5
+
+init:
+  - set PATH=C:\Qt\5.5\%qt%\bin;C:\dev\dependencies\vlc-qt\bin;%PATH%
+  - set ORIGPATH=%PATH%
+  - if not %platform%==mingw call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %platform%
+  - if not %platform%==mingw (set makefiles="NMake Makefiles") else (set makefiles="MinGW Makefiles")
+
+install:
+  - cd c:\dev
+  - md install
+  - md dependencies
+  - cd dependencies
+  - md vlc-qt
+  - cd vlc-qt
+  - ps: $vlcdl = 'https://googledrive.com/host/0B7I7Zg8w-HxRfmxSMmdhM3dTMGJnSklRX1c4ZkxmekJkcFplYnRLTU80R3Znd1VITkNueGs/vlc-qt_' + $env:qt + '_examples.7z'
+  - ps: Start-FileDownload $vlcdl -FileName vlc-qt.7z
+  - 7z x vlc-qt.7z > NUL
+
+before_build:
+  - cd c:\dev\examples
+  - md build
+
+build_script:
+  - if %platform%==mingw set PATH=C:\Qt\5.5\%qt%\bin;C:\dev\dependencies\vlc-qt\bin;C:\Qt\Tools\mingw492_32\bin;C:\Program Files (x86)\CMake\bin
+  - cd build
+  - cmake ..\%example% -G %makefiles% -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="c:/dev/install"
+  - if not %platform%==mingw (nmake) else (mingw32-make)
+  - if not %platform%==mingw (nmake install) else (mingw32-make install)
+  - if not %platform%==mingw (nmake windows) else (mingw32-make windows)
+  - if %platform%==mingw set PATH=%ORIGPATH%
+
+after_build:
+  - cd c:\dev\install
+  - set buildname=build%APPVEYOR_BUILD_NUMBER%_%APPVEYOR_REPO_COMMIT:~0,7%
+  - 7z a ..\examples\%example%_%buildname%_%name%.7z *
+
+test: off
+
+# test_script:
+#   - cd c:\dev\install
+#   - start /wait %example%.exe test
+#   - cd c:\dev\examples
+
+matrix:
+  fast_finish: true
+
+artifacts:
+  - path: '*.7z'
