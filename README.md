@@ -16,6 +16,7 @@ for more details.
 
 ## List of Examples
   - [Simple Player](https://github.com/vlc-qt/examples/tree/master/simple-player) (MIT)
+  - [QML Player](https://github.com/vlc-qt/examples/tree/master/qml-player) (MIT)
 
 
 ## Licensing info
