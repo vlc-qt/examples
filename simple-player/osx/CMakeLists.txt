@@ -16,7 +16,7 @@ CONFIGURE_FILE(
     ${CMAKE_BINARY_DIR}/osx/Info.plist
 )
 
-FILE(GLOB VlcQt_Core_Libs ${LIBVLCQT_LIB_DIR}/libvlc-qt.*)
+FILE(GLOB VlcQt_Core_Libs ${LIBVLCQT_LIB_DIR}/libvlc-qt-core.*)
 FILE(GLOB VlcQt_Widgets_Libs ${LIBVLCQT_LIB_DIR}/libvlc-qt-widgets.*)
 
 SET(VlcQt_Libs
