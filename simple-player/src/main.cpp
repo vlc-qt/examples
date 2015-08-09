@@ -6,7 +6,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtWidgets/QApplication>
 
-#include <vlc-qt/Common.h>
+#include <VLCQtCore/Common.h>
 
 #include "SimplePlayer.h"
 

@@ -22,7 +22,6 @@ SET(Project_Srcs
 # Compiler settings
 #
 # This needs to be added in order for #include to work inside .cpp files
-INCLUDE_DIRECTORIES(${LIBVLCQT_INCLUDE_DIR})
 INCLUDE_DIRECTORIES(
     ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_BINARY_DIR}/src
@@ -59,15 +58,16 @@ IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 ENDIF()
 
 # This line tells cmake to create the Project program.
-ADD_EXECUTABLE(${PROJECT_NAME} MACOSX_BUNDLE WIN32 ${Project_UIC_Srcs} ${Project_Srcs})
+ADD_EXECUTABLE(${PROJECT_NAME} MACOSX_BUNDLE WIN32 ${Project_UIs} ${Project_Srcs})
 
 # Use custom Info.plist
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES INSTALL_RPATH "${QT_LIB_DIR};@executable_path/../Frameworks")
     SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES MACOSX_BUNDLE_INFO_PLIST "${CMAKE_BINARY_DIR}/osx/Info.plist")
 ENDIF()
 
 # Here the needed Qt Libraries are added to the link command.
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} Qt5::Widgets ${LIBVLCQT_WIDGETS_LIBRARY} ${LIBVLCQT_CORE_LIBRARY})
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} Qt5::Widgets VLCQt::Widgets)
 
 
 #

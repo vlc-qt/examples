@@ -7,8 +7,8 @@
 #include <QtGui/QGuiApplication>
 #include <QtQuick/QQuickView>
 
-#include <vlc-qt/Common.h>
-#include <vlc-qt/QmlVideoPlayer.h>
+#include <VLCQtCore/Common.h>
+#include <VLCQtQml/QmlVideoPlayer.h>
 
 int main(int argc, char *argv[])
 {

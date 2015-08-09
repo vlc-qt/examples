@@ -3,9 +3,9 @@
 * Copyright (C) 2015 Tadej Novak <tadej@tano.si>
 */
 
-#include <vlc-qt/Audio.h>
-#include <vlc-qt/Equalizer.h>
-#include <vlc-qt/MediaPlayer.h>
+#include <VLCQtCore/Audio.h>
+#include <VLCQtCore/Equalizer.h>
+#include <VLCQtCore/MediaPlayer.h>
 
 #include "EqualizerDialog.h"
 

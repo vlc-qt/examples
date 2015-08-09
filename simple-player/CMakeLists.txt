@@ -65,15 +65,15 @@ IF(MSVC)
 ENDIF()
 
 # Find Qt
-FIND_PACKAGE(Qt5Core 5.2.0 REQUIRED)
-FIND_PACKAGE(Qt5Widgets 5.2.0 REQUIRED)
+FIND_PACKAGE(Qt5 5.2.0 REQUIRED COMPONENTS Widgets)
 
 # Add additional libraries
-FIND_PACKAGE(LIBVLCQT REQUIRED)
+FIND_PACKAGE(VLCQt REQUIRED COMPONENTS Widgets)
 
 # Set Qt bin dir to find QtCore*.dll and other libs to install
 STRING(REGEX REPLACE "([^ ]+)[/\\].*" "\\1" QT_BIN_DIR_TMP "${QT_MOC_EXECUTABLE}")
 STRING(REGEX REPLACE "\\\\" "/" QT_BIN_DIR "${QT_BIN_DIR_TMP}")  # Replace back slashes to slashes
+STRING(REGEX REPLACE "bin" "lib" QT_LIB_DIR "${QT_BIN_DIR}")
 
 # Set default install path:
 # In *nix environments this is /usr/local

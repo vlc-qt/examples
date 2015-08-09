@@ -19,27 +19,9 @@ HEADERS    += SimplePlayer.h \
 FORMS      += SimplePlayer.ui \
     EqualizerDialog.ui
 
-LIBS       += -lvlc-qt-core -lvlc-qt-widgets
+LIBS       += -lVLCQtCore -lVLCQtWidgets
 
 
 # Edit below for custom library location
-#LIBS       += -L/Users/tadej/workspace/tanoprojects/install/vlc-qt/lib -lvlc-qt-core -lvlc-qt-widgets
-#INCLUDEPATH += /Users/tadej/workspace/tanoprojects/install/vlc-qt/include
-
-# Copy required dlls on windows with install target
-#win32 {
-#	CONFIG(debug, debug|release) {
-#		LIBS += -L../../../../vlc-qt-build-debug/install/lib -llibvlc-qt-core -llibvlc-qt-widgets
-#		INCLUDEPATH += ../../../../vlc-qt-build-debug/install/include
-#		vlcQtDlls.path = $$OUT_PWD/debug
-#		vlcQtDlls.files = ../../../../vlc-qt-build-debug/install/bin/libvlc*
-#		vlcQtDlls.files += ../../../../vlc-qt-build-debug/install/bin/plugins
-#	} else {
-#		LIBS += -L../../../../vlc-qt-build/install/lib -llibvlc-qt -llibvlc-qt-widgets
-#		INCLUDEPATH += ../../../../vlc-qt-build/install/include
-#		vlcQtDlls.path = $$OUT_PWD/release
-#		vlcQtDlls.files = ../../../../vlc-qt-build/install/bin/libvlc*
-#		vlcQtDlls.files += ../../../../vlc-qt-build/install/bin/plugins
-#	}
-#	INSTALLS += vlcQtDlls
-#}
+LIBS       += -L/Users/tadej/workspace/tanoprojects/install/vlc-qt/lib -lVLCQtCore -lVLCQtWidgets
+INCLUDEPATH += /Users/tadej/workspace/tanoprojects/install/vlc-qt/include
