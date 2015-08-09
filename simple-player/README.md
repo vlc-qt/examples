@@ -29,7 +29,11 @@ If you want to use qmake, you can delete
 
 ### Windows
 
-You can install all required libraries with `install` target (currently CMake only).
+You can install all required libraries with (CMake only)
+```
+make install
+make windows
+```
 
 ### OS X
 

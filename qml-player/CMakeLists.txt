@@ -24,17 +24,6 @@ SET(CMAKE_MODULE_PATH
 SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTORCC ON)
 
-# Set MingW bin dir, if MingW present
-IF(MINGW)
-    STRING(REGEX REPLACE "([^ ]+)[/\\].*" "\\1" MINGW_BIN_DIR_TMP "${CMAKE_CXX_COMPILER}")
-    STRING(REGEX REPLACE "\\\\" "/" MINGW_BIN_DIR "${MINGW_BIN_DIR_TMP}") # Replace back slashes to slashes
-ENDIF(MINGW)
-
-#Select gcc exception handling method
-IF(MINGW)
-    set(GCC_EH_METHOD "dw2" CACHE STRING "Gcc exception handling method(dw2/sjlj)")
-ENDIF()
-
 # Show all warnings
 IF(NOT MSVC)
     SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall -Wextra")

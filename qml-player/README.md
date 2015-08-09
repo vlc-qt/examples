@@ -11,7 +11,11 @@ This example is compatible with:
 
 ### Windows
 
-You can install all required libraries with `install` target.
+You can install all required libraries with
+```
+make install
+make windows
+```
 
 ### OS X
 
