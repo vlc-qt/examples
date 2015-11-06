@@ -36,11 +36,11 @@ SimplePlayer::SimplePlayer(QWidget *parent)
 
     connect(ui->actionOpenLocal, &QAction::triggered, this, &SimplePlayer::openLocal);
     connect(ui->actionOpenUrl, &QAction::triggered, this, &SimplePlayer::openUrl);
-    connect(ui->actionPause, &QAction::triggered, _player, &VlcMediaPlayer::paused);
+    connect(ui->actionPause, &QAction::toggled, _player, &VlcMediaPlayer::togglePause);
     connect(ui->actionStop, &QAction::triggered, _player, &VlcMediaPlayer::stop);
     connect(ui->openLocal, &QPushButton::clicked, this, &SimplePlayer::openLocal);
     connect(ui->openUrl, &QPushButton::clicked, this, &SimplePlayer::openUrl);
-    connect(ui->pause, &QPushButton::clicked, _player, &VlcMediaPlayer::pause);
+    connect(ui->pause, &QPushButton::toggled, ui->actionPause, &QAction::toggle);
     connect(ui->stop, &QPushButton::clicked, _player, &VlcMediaPlayer::stop);
     connect(ui->equalizer, &QPushButton::clicked, _equalizerDialog, &EqualizerDialog::show);
 }
